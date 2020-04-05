@@ -1,0 +1,5 @@
+logs/*
+target/*
+.lein-repl-history
+target
+logs

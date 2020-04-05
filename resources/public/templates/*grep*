@@ -1,0 +1,12 @@
+-*- mode: grep; default-directory: "~/code/manemp/resources/public/templates/" -*-
+Grep started at Sun Jul 15 03:52:33
+
+grep -n -i /static base.html delete-lookup-types-confirm.html edit-lookup-types.html home.html import-mail.html index.html items.html login.html lookup-types.html lookups/ minor.html new-items.html new-lookup-types.html setup.html
+import-mail.html:73:<script src="/static/js/admin.js"></script>
+login.html:11:        <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+login.html:14:        <link href="/static/css/animate.css" rel="stylesheet">
+login.html:15:        <link href="/static/css/style.css" rel="stylesheet">
+login.html:51:        <script src="/static/js/jquery.min.js"></script>
+grep: lookups/: Is a directory
+
+Grep exited abnormally with code 2 at Sun Jul 15 03:52:33

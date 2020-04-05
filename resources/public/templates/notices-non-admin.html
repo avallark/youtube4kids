@@ -1,0 +1,53 @@
+{% extends "templates/base.html" %}
+{% block content %}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-md-8">
+        <h2>View Past Notices</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li class="active">
+                <strong>View Notices</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <!-- Widgets start here -->
+        <div class="col-lg-12"> <!-- Widget 1 for all -->
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Doctors List of {{list-user.full-name}}</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <table id="DataTable_0" class="table table-condensed table-striped table-bordered dataTable">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Notice</th>
+                                    <th>View Notice</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for n in notices %}
+                                <tr>
+                                    <td> {{n.notice-type}}</td>
+                                    <td> {{n.notice-subject}}</td>
+                                    <td><a href="/notice/{{n.notice-id}}/view">View</a></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <small id="notice-type-help" class="text-muted">N - Notice, I - For your information, A - For your Action, T - Company News, P - Pharma News</small>
+                    </div> <!-- Widget 1 -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

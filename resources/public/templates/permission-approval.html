@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Permission for a Video</title>
+
+        <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+        <!--<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+        <link href="/static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="/static/css/animate.css" rel="stylesheet">
+        <link href="/static/css/style.css" rel="stylesheet">
+
+    </head>
+
+    <body class="gray-bg skin-2">
+        <script src="/static/js/jquery.min.js"></script>
+
+        <div class="container">
+        <div class="col-md-5 animated fadeInDown">
+            <h1>Approve or Reject this permission request</h1>
+            <hr/>
+            <div class="row well">
+                <h4>Details of the Video</h4>
+                <table class="table table-hover">
+                    <tr><td>User</td><td>{{user.user-full-name}}</td></tr>
+                    <tr><td>Video</td><td>{{url-record.title}}</td></tr>
+                    <tr><td>Description</td><td>{{url-record.description}}</td></tr>
+                    <tr><td></td><td><img src="{{url-record.thumbnail}}"></td></tr>
+                    <tr><td>Video</td><td>https://www.youtube.com/watch?v={{url-record.video-id}}</td></tr>
+                </table>
+            </div>
+            <div class="col-md-6 row">
+                <form role="form" method="POST" name="leave-approval-form">
+                    <input type="hidden" id="approval-token" name="approval-token" value="{{url-record.approval-token}}">
+                    <div class="form-group">
+                        <textarea name="approval-comments" id="approval-comments" placeholder="Leave any comments if you please"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" name="approval-status" id="approval-status">
+                            <option value="A" selected="selected">Approve</option>
+                            <option value="R">Reject</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-warn">Reset</button>
+                </form>
+            </div>
+        </div>
+        </div>
+
+        <!-- Mainly scripts -->
+        <script src="/static/js/bootstrap.min.js"></script>
+
+    </body>
+
+</html>

@@ -1,0 +1,35 @@
+{% extends "templates/base.html" %}
+{% block content %}
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="m-t-lg">
+                <div id="change-password" class="col-md-4">
+                    <h3>Change your password</h3>
+                    <form id="change-password-form">
+                        <input type="hidden" name="email-id" id="email-id" value="{{email-id}}">
+                        <div class="form-group">
+                            <label for="old-password">Old password</label>
+                            <input onchange="validateOld();" name="old-password" type="password" class="form-control" id="old-password" aria-describedby="Old Password help" placeholder="Enter your old password"
+                            <small id="passwordHelp" class="form-text text-muted">Enter your old password here.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Your new Tzana mail password</label>
+                            <input name="password" type="password" class="form-control" id="password" aria-describedby="New Password Help" placeholder="Enter your new password">
+                            <small id="password2Help" class="form-text text-muted">This is the new password.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="repeat-password">Repeat your new password to confirm</label>
+                            <input onchange="validatePasswordConfirm();" name="repeat-password" type="password" class="form-control" id="repeat-password" aria-describedby="Repeat Password Help" placeholder="Repeat your new password to confirm">
+                            <small id="password2Help" class="form-text text-muted">Repeat your new password to confirm.</small>
+                            <div id="passok" style="display: none">Passwords match</div>
+                        </div>
+                        <a href="javascript:changePassword('{{email-id}}');" class="btn btn-primary" id="change-password-button">Change Password</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://static.tzanapharma.com/js/setup.js"></script>
+{% endblock %}

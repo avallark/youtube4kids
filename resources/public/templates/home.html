@@ -1,0 +1,78 @@
+{% extends "templates/base.html" %}
+{% block content %}
+<link href="/static/css/plugins/dataTables/datatables.min.css" rel="stylesheet">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row wrapper border-bottom white-bg page-heading">
+        {% if error|length > 0 %}
+        <div class="row alert alert-danger text-center">
+            <strong>{{error}}</strong>
+        </div>
+        {% endif %}
+        {% if tp-message|length > 0 %}
+        <div class="row alert alert-danger text-center">
+            <strong>{{res-message}}</strong>
+        </div>
+        {% endif %}
+
+    <div class="col-md-12">
+        <!-- Widgets start here -->
+
+        <!-- end widget -->
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Search Results for "{{search-string}}"</h5>
+            </div>
+            <div class="ibox-content">
+                <table id="DataTable_1" class="table table-condensed table-striped table-bordered table-responsive dataTable">
+                    <thead>
+                        <tr>
+                            <th>Video</th>
+                            <th>Title</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for res in results %}
+                        <tr>
+                          <td><img src="{{res.thumbnail}}"></td>
+                            <td>
+                              <strong>{{res.title}}</strong><br/>
+                              <small>{{res.description}}</small>
+                            </td>
+                            <td>
+                                <a class="btn btn-large btn-info" href="/askpermission?video-id={{res.video-id}}&title={{res.title}}&description={{res.description}}&thumbnail={{res.thumbnail}}">Ask Permission</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<script src="/static/js/plugins/dataTables/datatables.min.js"></script>
+<script type="application/javascript" src="static/js/src/home.js"></script>
+<script src="/static/js/src/create-call.js" type="application/javascript"></script>
+<script>
+ $(document).ready(function() {
+
+     $('#DataTable_1').DataTable({
+         pageLength: 10,
+         dom: '<"html5buttons"B>lTfgitp',
+         responsive: true,
+         buttons: [
+             {% ifequal req.session.user.user-role  "A" %}
+             {extend: 'copy'},
+             {extend: 'csv'},
+             {extend: 'excel', title: 'Doctors-List'},
+             {extend: 'pdf',
+              title: 'Doctors List',
+              exportOptions: {
+                  columns: [0]
+              }}
+             {% endifequal %}
+         ]
+     });
+ });
+</script>
+{% endblock %}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>YTK | {{page-title}}</title>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!--<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+
+    <link href="/static/css/animate.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <script
+            src="/static/js/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{req.session.user.user-full-name}}</strong>
+                                </span> <span class="text-muted text-xs block"> {{req.session.user.user-title}} <b class="caret"></b></span> </span> </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a href="/logout">Logout</a></li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                            YTK
+                        </div>
+                    </li>
+                    <li {% ifequal page "home.html" %} class="active" {% endifequal %}>
+                        <a href="/"><i class="fa fa-home"></i> <span class="nav-label">Home</span></a>
+                    </li>
+
+                    {% ifequal req.session.user.user-role  "A" %}
+                    
+                    <li {% ifequal page "notices.html" %} class="active" {% endifequal %}>
+                        <a href="/notices"><i class="fa fa-bullhorn"></i> <span class="nav-label">Notices</span></a>
+                    </li>
+                    <li {% ifequal page "setup.html" %} class="active" {% endifequal %}>
+                        <a href="/setup"><i class="fa fa-wrench"></i> <span class="nav-label">Setup</span></a>
+                    </li>
+
+                    {% endifequal %}
+
+                    
+
+                    {% ifequal req.session.user.user-role  "U" %}
+                    
+                    <li {% ifequal page "permissions.html" %} class="active" {% endifequal %} >
+                        <a href="/permissions/pending"><i class="fa fa-cubes"></i> <span class="nav-label">Pending</span> </a>
+                    </li>
+                    
+                    <li {% ifequal page "notices-non-admin.html" %} class="active" {% endifequal %}>
+                        <a href="/notices-e"><i class="fa fa-bullhorn"></i> <span class="nav-label">Notices</span></a>
+                    </li>
+                    <li {% ifequal page "setup.html" %} class="active" {% endifequal %}>
+                        <a href="/setup"><i class="fa fa-wrench"></i> <span class="nav-label">Setup</span></a>
+                    </li>
+                    {% endifequal %}
+
+                    
+                </ul>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li>{{page-title}}</li> |
+                        <li>
+                            <a href="/logout">
+                                <i class="fa fa-sign-out"></i> Log out
+                            </a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+
+
+            {% block content %}
+            {% endblock %}
+
+            <div class="footer">
+                <div class="pull-right">
+                    Here for good.
+                </div>
+                <div>
+                    <strong>Copyright</strong>Youtube for your Children&copy; 2014-2020
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Mainly scripts -->
+
+    <script src="/static/js/bootstrap.min.js"></script>
+
+    <script src="/static/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/static/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="/static/js/inspinia.js"></script>
+    <script src="/static/js/plugins/pace/pace.min.js"></script>
+
+</body>
+
+</html>
