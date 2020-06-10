@@ -7,3 +7,4 @@ This small webapp was built for my own personal use. I am frustrated at the amou
 The idea was to allow kids to search through youtube for any content they'd like to see. e.g. "how to solve a rubiks cube" and then send that video for an approval to their parents.
 
 Once approved, this content automatically downloads to a folder on the server. I have personally linked that folder to my plex media server and my kids can then watch that video via plex.
+
