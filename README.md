@@ -8,3 +8,6 @@ The idea was to allow kids to search through youtube for any content they'd like
 
 Once approved, this content automatically downloads to a folder on the server. I have personally linked that folder to my plex media server and my kids can then watch that video via plex.
 
+## Pre req
+
+1. Youtube-dl should be installed on your computer. Any other cli for downloading a youtube video does work too, but make sure you update scripts directory with the correct command for download.
